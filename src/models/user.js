@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const UserSchema = mongoose.Schema(
   {
@@ -22,11 +22,11 @@ const UserSchema = mongoose.Schema(
     },
     profilePicture: {
       type: String,
-      default: '',
+      default: "",
     },
     coverPicture: {
       type: String,
-      default: '',
+      default: "",
     },
     followers: {
       type: Array,
@@ -40,10 +40,26 @@ const UserSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    desc: {
+      type: String,
+      max: 50,
+    },
+    city: {
+      type: String,
+      max: 50,
+    },
+    from: {
+      type: String,
+      max: 50,
+    },
+    relationship: {
+      type: Number,
+      enum: [1, 2, 3],
+    },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
-const User = mongoose.model('users', UserSchema);
+const User = mongoose.model("users", UserSchema);
 
 export default User;

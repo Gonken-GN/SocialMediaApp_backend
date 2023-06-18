@@ -7,12 +7,15 @@
  * */
 
 import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+
+import userRouter from './src/routes/user.routes.js';
+import authRouter from './src/routes/auth.routes.js';
 
 const init = () => {
   // setting up the server
@@ -24,7 +27,8 @@ const init = () => {
   server.use(morgan('common'));
 
   // register the routes
-
+  server.use('/users', userRouter);
+  server.use('/', authRouter);
   // get env from .env file
   dotenv.config();
   // get port from .env
