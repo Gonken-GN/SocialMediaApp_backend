@@ -7,9 +7,17 @@
  * */
 
 import express from 'express';
-import { registerUser } from '../controllers/user.controllers.js';
+import {
+  deleteUser, followUser, getAllUser, getUserById, unfollowUser, updateUser,
+} from '../controllers/user.controllers.js';
 
 const router = express.Router();
-router.post('/register', registerUser);
+
+router.get('/:id', getUserById);
+router.get('/', getAllUser);
+router.put('/:id/follow', followUser);
+router.put('/:id/unfollow', unfollowUser);
+router.put('/:id', updateUser);
+router.delete('/:id', deleteUser);
 
 export default router;

@@ -22,6 +22,7 @@ export const registerUser = async (
       email,
       password: hashPassword,
     });
+    await user.save();
     const response = res.status(200).json({
       status: 'success',
       data: user,

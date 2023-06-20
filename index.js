@@ -16,6 +16,7 @@ import mongoose from 'mongoose';
 
 import userRouter from './src/routes/user.routes.js';
 import authRouter from './src/routes/auth.routes.js';
+import postRouter from './src/routes/post.routes.js';
 
 const init = () => {
   // setting up the server
@@ -28,7 +29,8 @@ const init = () => {
 
   // register the routes
   server.use('/users', userRouter);
-  server.use('/', authRouter);
+  server.use('/auth', authRouter);
+  server.use('/post', postRouter);
   // get env from .env file
   dotenv.config();
   // get port from .env
